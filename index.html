@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>余航 · 个人主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            background-image: url('images/bg.JPG'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-position: center center;
+            background-color: #f0f0f0; 
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 1.8em;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #007bff;
+            margin-bottom: 25px;
+            padding-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #007bff;
+            transition: width 0.4s ease-out;
+        }
+        .section-card:hover h2::before {
+            width: 100%;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        a:hover {
+            color: #007bff;
+            text-decoration: underline;
+            transform: translateY(-1px);
+        }
+        strong {
+            font-weight: 700;
+            color: #1abc9c;
+        }
+
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            position: sticky;
+            top: 30px;
+            align-self: flex-start;
+            transition: all 0.3s ease-in-out;
+        }
+        .sidebar:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .sidebar-avatar {
+            width: 180px;
+            height: 240px; 
+            border-radius: 50%; 
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 6px solid #007bff;
+            box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2); 
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .sidebar-avatar:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2); 
+        }
+
+        .sidebar-name-en {
+            font-size: 2em;
+            margin-bottom: 0;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+        .sidebar-name-cn {
+            font-size: 1.2em; 
+            color: #7f8c8d;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        
+        .sidebar-title {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+        .sidebar-info p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .sidebar-info i {
+            color: #007bff;
+            font-size: 1.1em;
+        }
+        .social-links {
+            margin-top: 25px;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 20px;
+        }
+        .social-links a {
+            font-size: 1.8em;
+            margin: 0 10px;
+            color: #7f8c8d;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: #007bff;
+            transform: translateY(-3px) scale(1.1);
+        }
+        .lang-switch {
+            margin-top: 16px;
+            font-size: 0.95em;
+            color: #7f8c8d;
+        }
+        .lang-switch a {
+            font-weight: 600;
+        }
+
+        .main-content {
+            flex-grow: 1;
+        }
+        .section-card {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            transition: all 0.3s ease-in-out;
+        }
+        .section-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .exp-item {
+            display: flex;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ecf0f1;
+            align-items: center;
+        }
+        .exp-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .exp-logo {
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+            margin-right: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            object-fit: contain;
+            padding: 8px;
+            background-color: #fcfcfc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .exp-logo:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .exp-details {
+            flex-grow: 1;
+            text-align: left;
+        }
+        .exp-details h3 {
+            font-size: 1.25em;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+        .exp-details p {
+            margin: 4px 0;
+            font-size: 0.98em;
+            color: #666;
+        }
+        .exp-details .time-period {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .exp-details a {
+            font-weight: 500;
+        }
+
+        .publication-item {
+            display: flex;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f0f0f0;
+            gap: 25px;
+            align-items: flex-start;
+            transition: background-color 0.3s;
+        }
+        .works-subsection .publication-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .works-subsection {
+            margin-bottom: 4px;
+        }
+        .works-subsection > h3 {
+            font-size: 1.22em;
+            color: #2c3e50;
+            margin: 28px 0 18px 0;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eef2;
+        }
+        .works-subsection:first-of-type > h3 {
+            margin-top: 6px;
+        }
+        .patent-item {
+            display: block;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .patent-item .pub-details {
+            max-width: 100%;
+        }
+        .publication-item:hover {
+            background-color: #fdfdfd;
+        }
+        .pub-image {
+            width: 220px;
+            flex-shrink: 0;
+        }
+        .pub-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
+        }
+        .pub-image img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .pub-details {
+            flex-grow: 1;
+        }
+        .pub-details h3 {
+            font-size: 1.35em;
+            margin-bottom: 8px;
+        }
+        .pub-details .authors {
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 0.98em;
+        }
+        .pub-details .venue {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-right: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+        }
+        .pub-links a {
+            margin-right: 12px;
+            font-weight: 600;
+            color: #007bff;
+        }
+        .pub-links .badge {
+            float: right;
+            margin-top: 2px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.85em;
+            color: #7f8c8d;
+            background-color: #eef1f0;
+            border-top: 1px solid #e0e0e0;
+            border-radius: 0 0 12px 12px;
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-bottom: 30px;
+                position: static;
+                top: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            h2 { font-size: 1.6em; }
+            .sidebar-avatar {
+                width: 120px;
+                height: 160px;
+            }
+            .sidebar-name-en { font-size: 1.8em; }
+            .sidebar-name-cn { font-size: 1em; }
+            .publication-item {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pub-image {
+                width: 80%;
+                max-width: 250px;
+                margin-bottom: 15px;
+            }
+            .pub-details {
+                text-align: center;
+            }
+        }
+        @media (max-width: 576px) {
+            .container {
+                padding: 15px;
+            }
+            .exp-item {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .exp-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            
+            <img src="images/hangyu.JPG" alt="余航" class="sidebar-avatar">
+            
+            <h1 class="sidebar-name-en">Hang Yu</h1>
+            <p class="sidebar-name-cn">余航</p>
+
+            <p class="sidebar-title">认知神经科学 · 博士研究生</p>
+            
+            <div class="sidebar-info">
+                <p><i class="fas fa-university"></i> 华东师范大学</p>
+                <p><i class="fas fa-map-marker-alt"></i> 中国，上海</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:hippocampus.yh@outlook.com">hippocampus.yh@outlook.com</a></p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://scholar.google.com/" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://github.com/Duke-Hange" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="lang-switch"><a href="index.html">English</a></p>
+        </div>
+
+        <div class="main-content">
+
+            <div class="section-card">
+                <h2>👋 关于我 <span style="font-size: 0.6em; color: #7f8c8d; font-weight: normal;">[更新于 2026-03-25]</span></h2>
+                <p>我是<strong>余航（Hang Yu）</strong>。我于浙江理工大学完成本科学位，导师为<a href="https://yjsxt.zstu.edu.cn/open/dsfc/search/F56F7CC7AD773059E0530100007F4C41" target="_blank" rel="noopener noreferrer">杨斌</a>；于四川师范大学完成硕士学位，导师为<a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">王一峰</a>；现为华东师范大学心理学博士研究生，导师为<a href="https://faculty.ecnu.edu.cn/_s9/yql2/main.psp" target="_blank" rel="noopener noreferrer">杨千里</a>。在此之前，我先后于北脑、上交担任科研助理，受益良多。</p>
+
+                <p>我现阶段的研究兴趣主要涉及<strong>人类计算建模</strong>；致力于使用<strong>概率图模型</strong>与<strong>强化学习</strong>方法探究人类复杂问题解决的奥秘,未来会慢慢开始分享我从心理学中学到的一切。</p>
+
+                <blockquote style="border-left: 4px solid #f39c12; padding-left: 15px; margin: 15px 0; color: #7f8c8d; background-color: #fffaf2; border-radius: 0 8px 8px 0;">
+                    <p style="margin: 0;">欢迎<strong>学习交流与科研合作</strong>；若方向契合，欢迎<a href="mailto:hippocampus.yh@outlook.com">📧 邮件联系</a>。</p>
+                </blockquote>
+            </div>
+
+            <div class="section-card">
+                <h2>🎓 教育背景</h2>
+
+                <div class="exp-item">
+                    <img src="images/Schools/华东师范大学.png" alt="华东师范大学" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>华东师范大学 · 心理学博士</h3>
+                        <p class="time-period">2025 - 至今</p>
+                        <p>导师：<a href="https://faculty.ecnu.edu.cn/_s9/yql2/main.psp" target="_blank" rel="noopener noreferrer">杨千里</a></p>
+                        <p>实验室：<a href="https://qyanglab.github.io/about/" target="_blank" rel="noopener noreferrer">Language of Thought Lab（LoT）</a></p>
+                        <p>课题方向：计算建模、认知地图、脑动力学。</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/四川师范大学.png" alt="四川师范大学" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>四川师范大学 · 心理学硕士</h3>
+                        <p class="time-period">2022 - 2025</p>
+                        <p>导师：<a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">王一峰</a></p>
+                        <p>课题方向：神经活动（fmri、EEG、fNIRS）的时空特异性以及具有认知功能特异性的频率干预策略。</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/浙江理工大学.jpg" alt="浙江理工大学" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>浙江理工大学 · 非织造材料与工程 学士</h3>
+                        <p class="time-period">2015 - 2019</p>
+                        <p>导师：<a href="https://yjsxt.zstu.edu.cn/open/dsfc/search/F56F7CC7AD773059E0530100007F4C41" target="_blank" rel="noopener noreferrer">杨斌</a></p>
+                        <p>浙江理工大学首届创业精英班班长兼优秀毕业生。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>💼 工作经历</h2>
+
+                <div class="exp-item">
+                    <img src="images/Schools/上海交通大学.svg" alt="上海交通大学" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>科研助理 · 上海交通大学 · 心理学院</h3>
+                        <p class="time-period">2025.08 – 2026.06</p>
+                        <p>导师：<a href="https://www.psy.pku.edu.cn/szdw/qzjy/jsyjy/zhry/index.htm" target="_blank" rel="noopener noreferrer">张洳源（Ru-Yuan Zhang）</a></p>
+                        <p>实验室：<a href="https://ruyuanzhang.github.io/people.html" target="_blank" rel="noopener noreferrer">Lab of Cognitive Computational Neuroscience and Neuroimaging</a></p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>协助采集与处理神经影像数据</li>
+                            <li>学习认知计算建模</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/广西医科大学.png" alt="广西医科大学" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>学术合作 · 广西医科大学</h3>
+                        <p class="time-period">2023.12 – 2025.06</p>
+                        <p>合作导师：蒋牧良；合作者：郑海峰；</p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>合作进行地贫的神经影像数据分析</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/北京脑科学与类脑研究中心.jpg" alt="北京脑科学与类脑研究中心" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>科研助理 · 北京脑科学与类脑研究中心（CIBR）</h3>
+                        <p class="time-period">2023.04 – 2023.11</p>
+                        <p>导师：<a href="https://brain.bnu.edu.cn/kytd/jsyjy/Ljs/18e25c12984e48eb966932924b9b76c7.htm" target="_blank" rel="noopener noreferrer">柳昀哲（Yunzhe Liu）</a></p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>协助采集 OPM-MEG 数据并编写数据处理程序</li>
+                            <li>学习解码人类记忆序列</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/百度.png" alt="百度" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>产品经理 · 百度</h3>
+                        <p class="time-period">2021 – 2022</p>
+                        <p>工作内容：某C端产品的需求梳理、跨团队推进与基于数据反馈的迭代优化。</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/浙理时光.jpg" alt="浙理时光" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>创始人 · 浙理时光</h3>
+                        <p class="time-period">2018 – 2021</p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>主办第一届阿里巴巴文学峰会（从策划到拉赞助到执行）</li>
+                            <li>主营浙理时光校园文创项目</li>
+                            <li>运营浙理时光咖啡厅</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>📝 学术成果</h2>
+
+                <div class="works-subsection">
+                    <h3>论文发表</h3>
+
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/International Journal of Clinical and Health Psychology.png" alt="论文配图">
+                    </div>
+                    <div class="pub-details">
+                        <h3>Frequency-specific modulations for subcomponents of executive functions in the infra-slow frequency range — A combined O-tDCS and fNIRS study</h3>
+                        <p class="authors"><strong>Yu, H.</strong>, Liu, X., Zheng, C., Wang, Z., Wang, M., Zhang, C., Hao, Q., Liu, R., & Wang, Y.</p>
+                        <p>
+                            <span class="venue">International Journal of Clinical and Health Psychology</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/Scientific Reports.png" alt="论文配图">
+                    </div>
+                    <div class="pub-details">
+                        <h3>HD-tDCS improves conflict processing and behavioral stability</h3>
+                        <p class="authors">Liu, R., Wang, M., Liu, Q., Jing, X., Hao, Q., <strong>Yu, H.</strong>, & Wang, Y.</p>
+                        <p>
+                            <span class="venue">Scientific Reports</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/ANNALS OF HEMATOLOGY.png" alt="论文配图">
+                    </div>
+                    <div class="pub-details">
+                        <h3>Aberrant functional connectivity and Granger causality analysis in patients with β-thalassemia major</h3>
+                        <p class="authors">Zheng, H¹., <strong>Yu, H¹.</strong>, Yang, X., Deng, X., Bu, M., Qin, Y., Chen, B.T., Wang, Y., & Jiang, M.</p>
+                        <p>
+                            <span class="venue">ANNALS OF HEMATOLOGY</span>
+                            <span class="pub-links">
+                                <i class="fas fa-bell"></i> ISMRM 2025
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/under review1.png" alt="论文配图">
+                    </div>
+                    <div class="pub-details">
+                        <h3>Disrupted Structure-Function Coupling in β-Thalassemia Major: Implications for Cognitive Impairment</h3>
+                        <p class="authors">Zheng, H¹., <strong>Yu, H¹.</strong>, Yang, X., Deng, X., Bu, M., Qin, Y., Chen, B.T., Wang, Y., & Jiang, M.</p>
+                        <p>
+                            <span class="venue">审稿中</span>
+                        </p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="works-subsection">
+                    <h3>专利</h3>
+                <div class="patent-item">
+                    <div class="pub-details">
+                        <h3>一种基于固有神经节律的振荡式经颅直流电刺激精准干预认知功能的方法及装置</h3>
+                        <p class="authors"><a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">王一峰</a>、<strong>余航</strong></p>
+                        <p>
+                            <span class="venue">中国专利</span>
+                        </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                &copy; 2026 余航 · Hang Yu
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
