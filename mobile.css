@@ -1,0 +1,81 @@
+/* Shared by both languages; desktop and landscape styles remain unchanged. */
+@media (max-width: 600px) and (orientation: portrait) {
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+        background-attachment: scroll;
+    }
+    .container, .container * { box-sizing: border-box; }
+    .container { padding: 14px; gap: 18px; }
+    .content-columns { gap: 18px; }
+    .main-content, .share-column { width: 100%; min-width: 0; }
+    .sidebar {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        column-gap: 20px;
+        padding: 22px 20px;
+        margin-bottom: 0;
+        text-align: left;
+    }
+    .sidebar-avatar {
+        grid-column: 1;
+        grid-row: 1 / 4;
+        width: 88px;
+        height: 116px;
+        border-width: 3px;
+        box-shadow: 0 0 0 5px rgba(0, 123, 255, 0.15);
+        margin: 4px 0 0;
+        align-self: center;
+    }
+    .sidebar-name-en { grid-column: 2; font-size: 27px; margin: 2px 0 0; }
+    .sidebar-name-cn { grid-column: 2; margin: 4px 0; font-size: 15px; }
+    .sidebar-title { grid-column: 2; font-size: 13px; margin: 4px 0 0; line-height: 1.6; }
+    .sidebar-info { grid-column: 1 / -1; margin-top: 18px; }
+    .sidebar-info p { justify-content: flex-start; font-size: 13px; margin: 7px 0; }
+    .sidebar-info a { min-width: 0; overflow-wrap: anywhere; }
+    .sidebar-info i { flex-shrink: 0; }
+    .social-links {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 12px;
+        padding-top: 12px;
+        margin-top: 12px;
+    }
+    .social-links a { margin: 0; min-width: 44px; min-height: 44px; display: grid; place-items: center; }
+    .lang-switch { grid-column: 1 / -1; margin: 8px 0 0; }
+    .lang-switch a { display: inline-block; padding: 8px 0; }
+    .section-card { padding: 22px 18px; margin-bottom: 18px; }
+    .section-card:hover { transform: none; }
+    h2 { font-size: 21px; margin-bottom: 20px; padding-top: 0; line-height: 1.5; }
+    h2 span { display: block; margin-top: 5px; }
+    .section-card > p { margin: 12px 0; }
+    blockquote { margin-left: 0 !important; margin-right: 0 !important; }
+    .exp-item { flex-direction: row; align-items: flex-start; gap: 12px; text-align: left; margin-bottom: 20px; padding-bottom: 20px; }
+    .exp-logo { width: 48px; height: 48px; padding: 4px; margin: 3px 0 0; border-radius: 8px; }
+    .exp-details { min-width: 0; flex: 1; }
+    .exp-details h3 { font-size: 16px; line-height: 1.55; }
+    .exp-details p, .exp-details ul { font-size: 13px !important; line-height: 1.75 !important; }
+    .exp-details .time-period { font-size: 12px !important; }
+    .exp-details a, .pub-details { overflow-wrap: anywhere; }
+    .extra-edu-list li { flex-direction: row; align-items: baseline; text-align: left; gap: 3px 12px; font-size: 13px; }
+    .extra-edu-org, .extra-edu-role { min-width: 0; }
+    .extra-edu-course { flex: 1 1 100%; }
+    .publication-item { display: block; text-align: left; margin-bottom: 22px; padding-bottom: 22px; }
+    .publication-item::after { content: ""; display: block; clear: both; }
+    .pub-image { float: left; width: 82px; max-width: 30%; margin: 3px 14px 8px 0; }
+    .pub-image img { display: block; border-radius: 6px; }
+    .pub-details { text-align: left; }
+    .pub-details h3 { font-size: 16px; line-height: 1.6; margin-bottom: 10px; }
+    .pub-details .authors { font-size: 12px; line-height: 1.7; margin-bottom: 10px; }
+    .venue { font-size: 11px !important; line-height: 1.6; letter-spacing: 0 !important; max-width: 100%; }
+    .pub-links { font-size: 12px; }
+    .photo-card { margin-top: 18px; margin-bottom: 0; }
+    .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: min(360px, 50svh); }
+    .lightbox { padding: 60px 12px 82px; }
+    .lightbox-figure img { max-height: calc(100svh - 170px); }
+    .lightbox-close, .lightbox-nav { width: 48px; height: 48px; }
+    .lightbox-nav { top: auto; bottom: max(16px, env(safe-area-inset-bottom)); transform: none; }
+    .footer { margin-top: 22px; padding: 16px 10px; font-size: 11px; }
+}
