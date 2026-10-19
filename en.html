@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hang Yu · Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            background-image: url('images/bg.JPG'); 
+            background-size: cover; 
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-position: center center;
+            background-color: #f0f0f0; 
+        }
+        .container {
+            max-width: 1560px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+        .content-columns {
+            display: flex;
+            flex: 1;
+            gap: 24px;
+            align-items: flex-start;
+            min-width: 0;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 1.8em;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #007bff;
+            margin-bottom: 25px;
+            padding-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #007bff;
+            transition: width 0.4s ease-out;
+        }
+        .section-card:hover h2::before {
+            width: 100%;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        a:hover {
+            color: #007bff;
+            text-decoration: underline;
+            transform: translateY(-1px);
+        }
+        strong {
+            font-weight: 700;
+            color: #1abc9c;
+        }
+
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            position: sticky;
+            top: 30px;
+            align-self: flex-start;
+            transition: all 0.3s ease-in-out;
+        }
+        .sidebar:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .sidebar-avatar {
+            width: 180px;
+            height: 240px; 
+            border-radius: 50%; 
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 6px solid #007bff;
+            box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2); 
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .sidebar-avatar:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2); 
+        }
+
+        .sidebar-name-en {
+            font-size: 2em;
+            margin-bottom: 0;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+        .sidebar-name-cn {
+            font-size: 1.2em; 
+            color: #7f8c8d;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        
+        .sidebar-title {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 1.1em;
+        }
+        .sidebar-info p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .sidebar-info i {
+            color: #007bff;
+            font-size: 1.1em;
+        }
+        .social-links {
+            margin-top: 25px;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 20px;
+        }
+        .social-links a {
+            font-size: 1.8em;
+            margin: 0 10px;
+            color: #7f8c8d;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: #007bff;
+            transform: translateY(-3px) scale(1.1);
+        }
+        .lang-switch {
+            margin-top: 16px;
+            font-size: 0.95em;
+            color: #7f8c8d;
+        }
+        .lang-switch a {
+            font-weight: 600;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .share-column {
+            width: 300px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 30px;
+        }
+        .share-card {
+            margin-bottom: 0;
+        }
+        .share-status {
+            margin: 8px 0 0;
+            font-size: 1em;
+            color: #666;
+            line-height: 1.7;
+        }
+        .section-card {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            transition: all 0.3s ease-in-out;
+        }
+        .section-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+        }
+
+
+        .photo-card { margin-top: 24px; margin-bottom: 0; }
+        .photo-card:hover { transform: none; }
+         .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            max-height: 420px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-gutter: stable;
+            scrollbar-width: thin;
+            scrollbar-color: #a5b4c1 #f1f4f6;
+            padding: 3px 6px 3px 3px;
+            overscroll-behavior-y: contain;
+        }
+        .photo-grid::-webkit-scrollbar { width: 8px; }
+        .photo-grid::-webkit-scrollbar-track { background: #f1f4f6; border-radius: 4px; }
+        .photo-grid::-webkit-scrollbar-thumb { background: #a5b4c1; border-radius: 4px; }
+        .photo-grid:not(:empty) { margin-top: 14px; }
+        .photo-grid button { display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 0; border-radius: 8px; overflow: hidden; cursor: zoom-in; background: #f4f7f8; }
+        .photo-grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease; }
+        .photo-grid button:hover img, .photo-grid button:focus-visible img { transform: scale(1.08); }
+        .photo-grid button:focus-visible { outline: 2px solid #007bff; outline-offset: 2px; }
+        .lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 64px 76px 36px; }
+        .lightbox[hidden] { display: none !important; }
+        .lightbox-backdrop { position: absolute; inset: 0; background: rgba(20, 24, 28, 0.88); }
+        .lightbox-figure { position: relative; z-index: 1; margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        .lightbox-figure img { max-width: min(1100px, 100%); max-height: calc(100vh - 150px); width: auto; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); background: #111; }
+        .lightbox-figure figcaption { color: #fff; font-size: 0.95em; line-height: 1.5; text-align: center; background: rgba(0, 0, 0, 0.55); border-radius: 999px; padding: 4px 12px; }
+        .lightbox-figure figcaption:empty { display: none; }
+        .lightbox-close, .lightbox-nav { position: absolute; z-index: 2; border: 0; background: rgba(255, 255, 255, 0.16); color: #fff; cursor: pointer; border-radius: 999px; line-height: 1; }
+        .lightbox-close:hover, .lightbox-nav:hover, .lightbox-close:focus-visible, .lightbox-nav:focus-visible { background: rgba(255, 255, 255, 0.32); }
+        .lightbox-close { top: 18px; right: 18px; width: 42px; height: 42px; font-size: 28px; }
+        .lightbox-nav { top: 50%; width: 46px; height: 46px; font-size: 34px; transform: translateY(-50%); }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+
+        .exp-item {
+            display: flex;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ecf0f1;
+            align-items: center;
+        }
+        .exp-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .exp-logo {
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+            margin-right: 25px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            object-fit: contain;
+            padding: 8px;
+            background-color: #fcfcfc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .exp-logo:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .exp-details {
+            flex-grow: 1;
+            text-align: left;
+        }
+        .exp-details h3 {
+            font-size: 1.25em;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+        .exp-details p {
+            margin: 4px 0;
+            font-size: 0.98em;
+            color: #666;
+        }
+        .exp-details .time-period {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        .exp-details a {
+            font-weight: 500;
+        }
+
+
+        .extra-edu { margin-top: 8px; padding-top: 4px; border-top: 2px solid #e8eef2; }
+        .extra-edu > h3 { font-size: 1.15em; margin: 16px 0 4px; }
+        .extra-edu-list { list-style: none; margin: 0; padding: 0; }
+        .extra-edu-list li { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 18px; row-gap: 2px; padding: 11px 0; border-bottom: 1px dashed #ecf0f1; font-size: 0.98em; line-height: 1.55; color: #555; }
+        .extra-edu-list li:last-child { border-bottom: none; padding-bottom: 0; }
+        .extra-edu-org { min-width: 6.6em; font-weight: 700; color: #2c3e50; }
+        .extra-edu-role { min-width: 5.6em; font-weight: 400; color: #000; }
+        .extra-edu-course { flex: 1 1 14em; }
+
+        .publication-item {
+            display: flex;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #f0f0f0;
+            gap: 25px;
+            align-items: flex-start;
+            transition: background-color 0.3s;
+        }
+        .works-subsection .publication-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .works-subsection {
+            margin-bottom: 4px;
+        }
+        .works-subsection > h3 {
+            font-size: 1.22em;
+            color: #2c3e50;
+            margin: 28px 0 18px 0;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eef2;
+        }
+        .works-subsection:first-of-type > h3 {
+            margin-top: 6px;
+        }
+        .patent-item {
+            display: block;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .patent-item .pub-details {
+            max-width: 100%;
+        }
+        .publication-item:hover {
+            background-color: #fdfdfd;
+        }
+        .pub-image {
+            width: 220px;
+            flex-shrink: 0;
+        }
+        .pub-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
+        }
+        .pub-image img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .pub-details {
+            flex-grow: 1;
+        }
+        .pub-details h3 {
+            font-size: 1.35em;
+            margin-bottom: 8px;
+        }
+        .pub-details .authors {
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 0.98em;
+        }
+        .pub-details .venue {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-right: 12px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+        }
+        .pub-links a {
+            margin-right: 12px;
+            font-weight: 600;
+            color: #007bff;
+        }
+        .pub-links .badge {
+            float: right;
+            margin-top: 2px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.85em;
+            color: #7f8c8d;
+            background-color: #eef1f0;
+            border-top: 1px solid #e0e0e0;
+            border-radius: 0 0 12px 12px;
+        }
+
+        @media (max-width: 992px) {
+            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-bottom: 30px;
+                position: static;
+                top: auto;
+            }
+            .content-columns {
+                width: 100%;
+                flex-direction: column;
+            }
+            .share-column {
+                width: 100%;
+                position: static;
+                top: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            h2 { font-size: 1.6em; }
+            .sidebar-avatar {
+                width: 120px;
+                height: 160px;
+            }
+            .sidebar-name-en { font-size: 1.8em; }
+            .sidebar-name-cn { font-size: 1em; }
+            .publication-item {
+                flex-direction: column;
+                align-items: center;
+            }
+            .pub-image {
+                width: 80%;
+                max-width: 250px;
+                margin-bottom: 15px;
+            }
+            .pub-details {
+                text-align: center;
+            }
+        }
+        @media (max-width: 576px) {
+            .extra-edu-list li { flex-direction: column; align-items: center; row-gap: 2px; text-align: center; }
+            .lightbox { padding: 58px 14px 72px; }
+            .lightbox-nav { top: auto; bottom: 16px; transform: none; }
+            .container {
+                padding: 15px;
+            }
+            .exp-item {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .exp-logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        /* Allow longer English labels to wrap within the original layout. */
+        .sidebar, .share-column { box-sizing: border-box; }
+        .sidebar-info p { overflow-wrap: anywhere; min-width: 0; }
+        .sidebar-info a, .pub-details, .exp-details { min-width: 0; overflow-wrap: anywhere; }
+        .extra-edu-org { min-width: 0; }
+        .extra-edu-role { min-width: 0; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            
+            <img src="images/hangyu.JPG" alt="Hang Yu" class="sidebar-avatar">
+            
+            <h1 class="sidebar-name-en">Hang Yu</h1>
+            <p class="sidebar-name-cn">余航</p>
+
+            <p class="sidebar-title">PhD Student in Cognitive Neuroscience</p>
+            
+            <div class="sidebar-info">
+                <p><i class="fas fa-university"></i> East China Normal University</p>
+                <p><i class="fas fa-map-marker-alt"></i> Shanghai, China</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:hippocampus.yh@outlook.com">hippocampus.yh@outlook.com</a></p>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://scholar.google.com/citations?user=_Ym4jM0AAAAJ&hl=en" title="Google Scholar" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://github.com/Duke-Hange" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="lang-switch"><a href="index.html" lang="zh-CN" hreflang="zh-CN">中文</a></p>
+        </div>
+
+        <div class="content-columns">
+        <div class="main-content">
+
+            <div class="section-card">
+                <h2>👋 About Me <span style="font-size: 0.6em; color: #7f8c8d; font-weight: normal;">[Updated March 25, 2026]</span></h2>
+                <p>I am <strong>Hang Yu</strong>. I completed my undergraduate degree at Zhejiang Sci-Tech University under the supervision of <a href="https://yjsxt.zstu.edu.cn/open/dsfc/search/F56F7CC7AD773059E0530100007F4C41" target="_blank" rel="noopener noreferrer">Bin Yang</a>, and my master’s degree at Sichuan Normal University under <a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">Yifeng Wang</a>. I am now a PhD student in cognitive neuroscience at East China Normal University, supervised by <a href="https://faculty.ecnu.edu.cn/_s9/yql2/main.psp" target="_blank" rel="noopener noreferrer">Qianli Yang</a>. I have also gained valuable research experience as a research assistant at the Chinese Institute for Brain Research, Beijing, and Shanghai Jiao Tong University.</p>
+
+                <p>I embarked on an academic career to pursue the questions that most interest me. My current focus is on <strong>computational modeling of human cognition</strong>. I aim to use <strong>probabilistic graphical models</strong> and <strong>reinforcement learning</strong> to understand how humans solve complex problems. I also hope to share what I learn from psychology along the way.</p>
+
+                                <blockquote style="border-left: 4px solid #f39c12; padding-left: 15px; margin: 15px 0; color: #7f8c8d; background-color: #fffaf2; border-radius: 0 8px 8px 0;">
+                    <p style="margin: 0;">I welcome <strong>academic exchange and research collaboration</strong>. If our interests align, please <a href="mailto:hippocampus.yh@outlook.com">📧 get in touch by email</a>.</p>
+                </blockquote>
+            </div>
+
+            <div class="section-card">
+                <h2>🎓 Education</h2>
+
+                <div class="exp-item">
+                    <img src="images/Schools/华东师范大学.png" alt="East China Normal University" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>East China Normal University · PhD in Cognitive Neuroscience</h3>
+                        <p class="time-period">2025 – Present</p>
+                        <p>Supervisor: <a href="https://faculty.ecnu.edu.cn/_s9/yql2/main.psp" target="_blank" rel="noopener noreferrer">Qianli Yang</a></p>
+                        <p>Lab: <a href="https://qyanglab.github.io/about/" target="_blank" rel="noopener noreferrer">Language of Thought Lab (LoT)</a></p>
+                        <p>Research: computational modeling, cognitive maps, and brain dynamics.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/四川师范大学.png" alt="Sichuan Normal University" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Sichuan Normal University · Master’s in Psychology</h3>
+                        <p class="time-period">2022 - 2025</p>
+                        <p>Supervisor: <a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">Yifeng Wang</a></p>
+                        <p>Research: spatiotemporal specificity of neural activity (fMRI, EEG, and fNIRS), and frequency-specific interventions targeting cognitive functions.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/浙江理工大学.jpg" alt="Zhejiang Sci-Tech University" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Zhejiang Sci-Tech University · Bachelor’s in Nonwoven Materials and Engineering</h3>
+                        <p class="time-period">2015 - 2019</p>
+                        <p>Supervisor: <a href="https://yjsxt.zstu.edu.cn/open/dsfc/search/F56F7CC7AD773059E0530100007F4C41" target="_blank" rel="noopener noreferrer">Bin Yang</a></p>
+                        <p>Class representative and Outstanding Graduate of Zhejiang Sci-Tech University’s inaugural Entrepreneurship Elite Class.</p>
+                    </div>
+                </div>
+
+                <div class="extra-edu" id="extra-edu">
+                    <h3>Additional Experience</h3>
+                    <ul class="extra-edu-list">
+                        <li>
+                            <span class="extra-edu-org">Sichuan Normal University</span>
+                            <span class="extra-edu-role">Funded participant</span>
+                            <span class="extra-edu-course">Cambridge–Oxford Academic Writing Program</span>
+                        </li>
+                        <li>
+                            <span class="extra-edu-org">Shanghai Innovation Institute</span>
+                            <span class="extra-edu-role">Preparatory program</span>
+                            <span class="extra-edu-course">Optimization Theory and Algorithms</span>
+                        </li>
+                        <li>
+                            <span class="extra-edu-org">East China Normal University</span>
+                            <span class="extra-edu-role">Teaching assistant</span>
+                            <span class="extra-edu-course">Introduction to Artificial Intelligence</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>👨‍🔬 Research Experience</h2>
+
+                <div class="exp-item">
+                    <img src="images/Schools/上海交通大学.svg" alt="Shanghai Jiao Tong University" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Research Assistant · School of Psychology, Shanghai Jiao Tong University</h3>
+                        <p class="time-period">2025.08 – 2026.06</p>
+                        <p>Supervisor: <a href="https://www.psy.pku.edu.cn/szdw/qzjy/jsyjy/zhry/index.htm" target="_blank" rel="noopener noreferrer">Ru-Yuan Zhang</a></p>
+                        <p>Lab: <a href="https://ruyuanzhang.github.io/people.html" target="_blank" rel="noopener noreferrer">Lab of Cognitive Computational Neuroscience and Neuroimaging</a></p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>Assisted with neuroimaging data acquisition and processing.</li>
+                            <li>Studied computational modeling of cognition.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/广西医科大学.png" alt="Guangxi Medical University" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Research Collaboration · Guangxi Medical University</h3>
+                        <p class="time-period">2023.12 – 2025.06</p>
+                        <p>Collaborating supervisor: Muliang Jiang; collaborator: Haifeng Zheng.</p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>Collaborated on neuroimaging data analysis in thalassemia.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/北京脑科学与类脑研究中心.jpg" alt="Chinese Institute for Brain Research, Beijing" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Research Assistant · Chinese Institute for Brain Research, Beijing (CIBR)</h3>
+                        <p class="time-period">2023.04 – 2023.11</p>
+                        <p>Supervisor: <a href="https://brain.bnu.edu.cn/kytd/jsyjy/Ljs/18e25c12984e48eb966932924b9b76c7.htm" target="_blank" rel="noopener noreferrer">Yunzhe Liu</a></p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>Assisted with OPM-MEG data acquisition and developed data-processing scripts.</li>
+                            <li>Studied the decoding of human memory sequences.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-card">
+                <h2>💼 Professional Experience</h2>
+
+                <div class="exp-item">
+                    <img src="images/Schools/百度.png" alt="Baidu" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Product Manager · Baidu</h3>
+                        <p class="time-period">2021 – 2022</p>
+                        <p>Defined product requirements, coordinated cross-team delivery, and guided data-informed improvements for a product with over 100 million users.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/壹家剧社.jpg" alt="Yijia Drama Club" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Co-founder · Yijia Drama Club</h3>
+                        <p class="time-period">2018 – 2021</p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>Developed an in-person social entertainment business, expanding to three franchise locations within six months.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/墅懒日租.jpg" alt="Shulan Daily Rentals" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Partner · Shulan Daily Rentals</h3>
+                        <p class="time-period">2018 – 2021</p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>Built a B2C business focused on in-person social activities; secured RMB 800,000 in seed funding.</li>
+                            <li>National Gold Award, 12th “Challenge Cup” China College Students’ Entrepreneurship Competition.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <img src="images/Schools/浙理时光.jpg" alt="Zheli Time" class="exp-logo">
+                    <div class="exp-details">
+                        <h3>Founder · Zheli Time</h3>
+                        <p class="time-period">2018 – 2021</p>
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                            <li>Organized the inaugural Alibaba Literature Summit, from planning and sponsorship to execution.</li>
+                            <li>Developed campus cultural and creative products under the Zheli Time brand.</li>
+                            <li>Operated the Zheli Time Café and Zheli Time Xinhua Bookstore.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>📝 Academic Work</h2>
+
+                <div class="works-subsection">
+                    <h3>Publications</h3>
+
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/International Journal of Clinical and Health Psychology.png" alt="Publication figure">
+                    </div>
+                    <div class="pub-details">
+                        <h3>Frequency-specific modulations for subcomponents of executive functions in the infra-slow frequency range — A combined O-tDCS and fNIRS study</h3>
+                        <p class="authors"><strong>Yu, H.</strong>, Liu, X., Zheng, C., Wang, Z., Wang, M., Zhang, C., Hao, Q., Liu, R., & Wang, Y.</p>
+                        <p>
+                            <span class="venue">International Journal of Clinical and Health Psychology</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/Scientific Reports.png" alt="Publication figure">
+                    </div>
+                    <div class="pub-details">
+                        <h3>HD-tDCS improves conflict processing and behavioral stability</h3>
+                        <p class="authors">Liu, R., Wang, M., Liu, Q., Jing, X., Hao, Q., <strong>Yu, H.</strong>, & Wang, Y.</p>
+                        <p>
+                            <span class="venue">Scientific Reports</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/ANNALS OF HEMATOLOGY.png" alt="Publication figure">
+                    </div>
+                    <div class="pub-details">
+                        <h3>Aberrant functional connectivity and Granger causality analysis in patients with β-thalassemia major</h3>
+                        <p class="authors">Zheng, H¹., <strong>Yu, H¹.</strong>, Yang, X., Deng, X., Bu, M., Qin, Y., Chen, B.T., Wang, Y., & Jiang, M.</p>
+                        <p>
+                            <span class="venue">ANNALS OF HEMATOLOGY</span>
+                            <span class="pub-links">
+                                <i class="fas fa-bell"></i> ISMRM 2025
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="publication-item">
+                    <div class="pub-image">
+                        <img src="images/publications/under review1.png" alt="Publication figure">
+                    </div>
+                    <div class="pub-details">
+                        <h3>Disrupted Structure-Function Coupling in β-Thalassemia Major: Implications for Cognitive Impairment</h3>
+                        <p class="authors">Zheng, H¹., <strong>Yu, H¹.</strong>, Yang, X., Deng, X., Bu, M., Qin, Y., Chen, B.T., Wang, Y., & Jiang, M.</p>
+                        <p>
+                            <span class="venue">Under review</span>
+                        </p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="works-subsection">
+                    <h3>Patent</h3>
+                <div class="patent-item">
+                    <div class="pub-details">
+                        <h3>A Method and Device for Targeted Cognitive Intervention Using Oscillatory Transcranial Direct Current Stimulation Based on Intrinsic Neural Rhythms</h3>
+                        <p class="authors"><a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">Yifeng Wang</a>, <strong>Hang Yu</strong></p>
+                        <p>
+                            <span class="venue">Invention patent</span>
+                        </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+
+
+            <div class="footer">
+                &copy; The odds may not fall your way, but you can shape a probability distribution in your favor. 2026
+            </div>
+
+        </div>
+
+        <div class="share-column">
+            <div class="section-card share-card">
+                <h2>📚 Learning Notes</h2>
+                <p class="share-status">Under construction. Stay tuned.</p>
+            </div>
+            <div class="section-card photo-card" id="photo-wall">
+                <h2>📷 Life in Photos</h2>
+                <p class="share-status" id="photo-empty">Photos coming soon.</p>
+                <div class="photo-grid" id="photo-grid" tabindex="0" role="region" aria-label="Life photos; scroll vertically"></div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <div class="lightbox-backdrop" data-close></div>
+        <button type="button" class="lightbox-close" data-close aria-label="Close">&times;</button>
+        <button type="button" class="lightbox-nav lightbox-prev" data-dir="-1" aria-label="Previous photo">&#8249;</button>
+        <figure class="lightbox-figure">
+            <img id="lightbox-img" alt="">
+            <figcaption id="lightbox-caption"></figcaption>
+        </figure>
+        <button type="button" class="lightbox-nav lightbox-next" data-dir="1" aria-label="Next photo">&#8250;</button>
+    </div>
+    <script>
+        (function () {
+            // Add photos to images/gallery/ and list them here in display order.
+            var photos = [
+                { src: "images/gallery/e4e65f913625fce0bdfc4d09f01e3a0d.jpg" },
+                { src: "images/gallery/938055a9c01a00c10e88fcbe9aac6922.jpg" },
+                { src: "images/gallery/073a92040b01f8bce9a824e8c49d749d.jpg" },
+                { src: "images/gallery/a0fbd30115f141498cb03b48a7bd88da.jpg" },
+                { src: "images/gallery/50c6ce83ad5f0d05f6d3ead775083ddc.jpg" },
+                { src: "images/gallery/499f60e59b5e09e370ba931355e9cdb1.jpg" },
+                { src: "images/gallery/55c0759192a7a3bc5d409cb82c840f0c.jpg" },
+                { src: "images/gallery/9ab128324b802de9d027278e4a68306e.jpg" },
+                { src: "images/gallery/2608f691109663d0e6fbc2acf3442b5e.jpg" },
+                { src: "images/gallery/ea00f6a410194068a76c56a8df0c77ce.jpg" },
+                { src: "images/gallery/e7c68b3701930525185c30d1e17d5a7d.jpg" },
+                { src: "images/gallery/c6b4b9dea634e9e4646fc2f12588dded.jpg" },
+                { src: "images/gallery/d41b92f915d241d4b29408f112491643.jpg" },
+                { src: "images/gallery/e61296badb11257cb4866fc195760b66.jpg" },
+                { src: "images/gallery/aabe0821fce1291333a8e7557cde6985.jpg" },
+                { src: "images/gallery/a60366633bc785e1cd83e99a486911f1.jpg" },
+            ];
+            var grid = document.getElementById("photo-grid");
+            var empty = document.getElementById("photo-empty");
+            var lightbox = document.getElementById("lightbox");
+            var lightboxImg = document.getElementById("lightbox-img");
+            var lightboxCaption = document.getElementById("lightbox-caption");
+            var prevButton = lightbox.querySelector(".lightbox-prev");
+            var nextButton = lightbox.querySelector(".lightbox-next");
+            var index = 0;
+            var lastTrigger = null;
+
+            if (!photos.length) return;
+            empty.hidden = true;
+            prevButton.hidden = nextButton.hidden = photos.length < 2;
+
+            photos.forEach(function (photo, i) {
+                var button = document.createElement("button");
+                var img = document.createElement("img");
+                var label = photo.alt || ("Photo " + (i + 1));
+                button.type = "button";
+                button.setAttribute("aria-label", "View photo: " + label);
+                img.src = photo.src;
+                img.alt = photo.alt || "";
+                img.loading = "lazy";
+                button.appendChild(img);
+                button.addEventListener("click", function () {
+                    lastTrigger = button;
+                    openAt(i);
+                });
+                grid.appendChild(button);
+            });
+
+            function openAt(i) {
+                index = (i + photos.length) % photos.length;
+                var photo = photos[index];
+                var caption = photo.alt || "";
+                lightboxImg.src = photo.src;
+                lightboxImg.alt = caption;
+                lightboxCaption.textContent = photos.length > 1
+                    ? ((index + 1) + " / " + photos.length + (caption ? "  " + caption : ""))
+                    : caption;
+                lightbox.hidden = false;
+                document.body.style.overflow = "hidden";
+                lightbox.querySelector(".lightbox-close").focus();
+            }
+
+            function closeLightbox() {
+                lightbox.hidden = true;
+                lightboxImg.removeAttribute("src");
+                document.body.style.overflow = "";
+                if (lastTrigger) lastTrigger.focus();
+            }
+
+            lightbox.addEventListener("click", function (event) {
+                if (event.target.closest("[data-close]")) {
+                    closeLightbox();
+                    return;
+                }
+                var dir = event.target.closest("[data-dir]");
+                if (dir) openAt(index + Number(dir.getAttribute("data-dir")));
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (lightbox.hidden) return;
+                if (event.key === "Escape") closeLightbox();
+                if (event.key === "ArrowLeft" && photos.length > 1) openAt(index - 1);
+                if (event.key === "ArrowRight" && photos.length > 1) openAt(index + 1);
+            });
+        })();
+    </script>
+
+</body>
+</html>
