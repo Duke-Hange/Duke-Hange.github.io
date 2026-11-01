@@ -38,8 +38,12 @@ def render(english):
     else:
         text, n = re.subn(r'(<div class="section-card share-card">).*?(\s*</div>)', lambda m: m[1] + '\n' + block + m[2], text, count=1, flags=re.S)
         assert n == 1
-    if 'href="sharing.css"' not in text:
-        text = text.replace('</head>', '<link rel="stylesheet" href="sharing.css">\n</head>')
+    # Change the version when sharing styles change so hosted pages refresh cached CSS.
+    stylesheet = 'sharing.css?v=20261101-2'
+    if re.search(r'href="sharing\.css(?:\?[^"]*)?"', text):
+        text = re.sub(r'href="sharing\.css(?:\?[^"]*)?"', f'href="{stylesheet}"', text)
+    else:
+        text = text.replace('</head>', f'<link rel="stylesheet" href="{stylesheet}">\n</head>')
     p.write_text(text, encoding='utf-8')
 
     cards = []
