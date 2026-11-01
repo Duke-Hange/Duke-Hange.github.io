@@ -23,6 +23,16 @@
   },
   {
     "category": "notes",
+    "href": "structure-learning.html",
+    "title": "概率图模型与结构学习",
+    "title_en": "Probabilistic Graphical Models and Structure Learning",
+    "summary": "从条件独立到结构搜索与贝叶斯推断。结合贯穿案例，理解结构如何从数据中学得。",
+    "summary_en": "From conditional independence to structure search and Bayesian inference, with a running example linking data to learned structure.",
+    "meta": "概率图模型 · 15 章 · 8 张交互概念图",
+    "meta_en": "Graphical models · 15 chapters · 8 interactive concept maps"
+  },
+  {
+    "category": "notes",
     "href": "fmri/index.html",
     "title": "理解 fMRI 预处理",
     "title_en": "Understanding fMRI Preprocessing",

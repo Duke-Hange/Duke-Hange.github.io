@@ -4,11 +4,12 @@
 
 主页右侧的“学习分享”分为“文献推荐”和“学习笔记”，每类最多展示前三条。
 点击条目可阅读完整材料，“查看全部”进入支持分类和搜索的目录页。
-中英文主页都有入口；目前五份学习材料的正文均为中文。
+中英文主页都有入口；目前六份学习材料的正文均为中文。
 
 - `learning/index.html`：中文目录；`learning/en.html`：英文目录。
 - `learning/ten-simple-rules/index.html`：计算建模的十条简单规则。
 - `learning/model-disagreement/index.html`：让模型产生分歧，理解大脑如何计算。
+- `learning/structure-learning.html`：概率图模型与结构学习；副标题为“从条件独立到结构搜索与贝叶斯推断”。
 - `learning/fmri/index.html`：理解 fMRI 预处理。
 - `learning/planning.html`：问题表示与搜索（E1）。
 - `learning/reinforcement-learning.html`：强化学习与决策（E2）。
