@@ -11,6 +11,9 @@
     .container { padding: 14px; gap: 18px; }
     .content-columns { gap: 18px; }
     .main-content, .share-column { width: 100%; min-width: 0; }
+    /* Let the motto follow both the CV and the sharing/gallery column on phones. */
+    .main-content { display: contents; }
+    .main-content > .section-card { width: 100%; margin-bottom: 0; }
     .sidebar {
         display: grid;
         grid-template-columns: 88px minmax(0, 1fr);
@@ -77,5 +80,5 @@
     .lightbox-figure img { max-height: calc(100svh - 170px); }
     .lightbox-close, .lightbox-nav { width: 48px; height: 48px; }
     .lightbox-nav { top: auto; bottom: max(16px, env(safe-area-inset-bottom)); transform: none; }
-    .footer { margin-top: 22px; padding: 16px 10px; font-size: 11px; }
+    .footer { order: 1; width: 100%; margin-top: 4px; padding: 16px 10px; font-size: 11px; }
 }
