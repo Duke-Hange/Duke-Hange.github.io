@@ -1,7 +1,26 @@
 /* Learning links: scoped to preserve the existing CV layout. */
+.share-heading { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; border-bottom: 3px solid #007bff; margin-bottom: 25px; }
+.share-heading h2 { flex: 1 1 150px; min-width: 0; border-bottom: 0; margin-bottom: 0; }
+.share-view-all { flex-shrink: 0; font-size: 12px; font-weight: 400; line-height: 1.6; white-space: nowrap; padding: 6px 0; }
+.share-view-all:hover { transform: none; }
 .share-section + .share-section { margin-top: 25px; padding-top: 22px; border-top: 1px solid #e8eef2; }
 .share-section h3 { display: flex; align-items: center; gap: 8px; font-size: 1.08em; margin: 0 0 8px; }
 .share-count { font-size: 11px; font-weight: 400; color: #667782; background: #f0f5f8; border-radius: 20px; padding: 2px 7px; }
+.share-scroll {
+    max-height: 260px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #a5b4c1 #f1f4f6;
+    padding: 4px 12px 4px 4px;
+    overscroll-behavior-y: contain;
+}
+.share-section[data-category="papers"] .share-scroll { max-height: 180px; }
+.share-scroll::-webkit-scrollbar { width: 8px; }
+.share-scroll::-webkit-scrollbar-track { background: #f1f4f6; border-radius: 4px; }
+.share-scroll::-webkit-scrollbar-thumb { background: #a5b4c1; border-radius: 4px; }
+.share-scroll:focus-visible, .share-view-all:focus-visible { outline: 2px solid #007bff; outline-offset: 3px; }
 .share-list { padding: 0; margin: 0; list-style: none; }
 .share-list li + li { border-top: 1px dashed #e5ebef; }
 .share-entry { display: block; padding: 13px 0; color: #34495e; }
@@ -12,10 +31,20 @@
 .share-entry:hover .share-entry-title { color: #0056b3; text-decoration: underline; text-underline-offset: 3px; }
 .share-entry-summary { display: block; margin-top: 5px; font-size: 12px; line-height: 1.7; color: #637481; }
 .share-entry-meta { display: block; margin-top: 6px; font-size: 11px; line-height: 1.5; color: #697985; }
-.share-more { display: inline-block; margin-top: 12px; font-size: 13px; line-height: 1.6; padding: 6px 0; }
 .share-caption { font-size: 12px; line-height: 1.7; color: #637481; margin: -10px 0 20px; }
 /* Keep the gallery reachable when the expanded sidebar exceeds the screen. */
 .share-column { position: static; }
+/* Use the spare space on desktop for a wider reading column, centered as a whole. */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1700px;
+        margin-inline: auto;
+    }
+    .share-column {
+        width: clamp(320px, 25vw, 420px);
+        flex-shrink: 0;
+    }
+}
 @media (max-width: 600px) and (orientation: portrait) {
     .share-entry { padding: 15px 0; }
     .share-entry-title { font-size: 15px; }

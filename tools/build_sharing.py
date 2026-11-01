@@ -21,15 +21,15 @@ def render(english):
     groups = [('papers', 'Paper Recommendations' if english else '文献推荐'),
               ('notes', 'Study Notes' if english else '学习笔记')]
     title = 'Learning & Sharing' if english else '学习分享'
-    sidebar = f'<h2>📚 {title}</h2>'
+    sidebar = f'<div class="share-heading"><h2>📚 {title}</h2><a class="share-view-all" href="learning/{library}">{"View all" if english else "查看全部"} →</a></div>'
     if english:
         sidebar += '<p class="share-caption">Interactive reading notes and tutorials. Full materials are in Chinese.</p>'
     for category, label in groups:
         selected = [item for item in ITEMS if item['category'] == category]
-        sidebar += f'<section class="share-section"><h3>{label}<span class="share-count">{len(selected)}</span></h3><ul class="share-list">'
-        for item in selected[:3]:
+        sidebar += f'<section class="share-section" data-category="{category}"><h3 id="share-{category}-title">{label}<span class="share-count">{len(selected)}</span></h3><div class="share-scroll" tabindex="0" role="region" aria-labelledby="share-{category}-title"><ul class="share-list">'
+        for item in selected:
             sidebar += f'''<li><a class="share-entry" href="learning/{escape(item['href'])}"><span class="share-entry-title">{value(item, 'title', english)}</span><span class="share-entry-summary">{value(item, 'summary', english)}</span><span class="share-entry-meta">{value(item, 'meta', english)}</span></a></li>'''
-        sidebar += f'</ul><a class="share-more" href="learning/{library}#{category}">{"View all" if english else "查看全部"} →</a></section>'
+        sidebar += '</ul></div></section>'
     p = ROOT / home
     text = p.read_text(encoding='utf-8')
     block = '<!-- SHARING:START -->\n' + sidebar + '\n<!-- SHARING:END -->'
