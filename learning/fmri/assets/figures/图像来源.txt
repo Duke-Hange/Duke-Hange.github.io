@@ -1,0 +1,2 @@
+source-image3.png 与 source-image18.png：从用户提供的 D:\桌面文件夹\川师工作\余航的核磁笔记2.pptx 的 ppt/media/image3.png、image18.png 原样提取。仅作为图像对比及头动报告阅读练习。无原始扫描元数据，不据此认定同一被试或校正前后关系。
+其余 SVG 为本教材数学模拟的静态输出。

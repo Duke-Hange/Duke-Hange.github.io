@@ -1,5 +1,30 @@
 # Hang Yu 个人主页项目
 
+## 学习分享栏目
+
+主页右侧的“学习分享”分为“文献推荐”和“学习笔记”，每类最多展示前三条。
+点击条目可阅读完整材料，“查看全部”进入支持分类和搜索的目录页。
+中英文主页都有入口；目前五份学习材料的正文均为中文。
+
+- `learning/index.html`：中文目录；`learning/en.html`：英文目录。
+- `learning/ten-simple-rules/index.html`：计算建模的十条简单规则。
+- `learning/model-disagreement/index.html`：让模型产生分歧，理解大脑如何计算。
+- `learning/fmri/index.html`：理解 fMRI 预处理。
+- `learning/planning.html`：问题解决与规划（E1）。
+- `learning/reinforcement-learning.html`：强化学习与决策（E2）。
+
+### 新增或更新条目
+
+1. 将完整 HTML 材料及其图片、脚本放入 `learning/`，使用相对路径。
+2. 在 `learning/catalog.json` 增加条目，填写分类、路径、中英文标题、简介与标签。
+   `papers` 表示文献推荐，`notes` 表示学习笔记；数组中的顺序就是展示顺序。
+3. 在项目目录执行 `python tools/build_sharing.py`，同步生成两个主页的栏目和中英文目录。
+4. 将生成的页面、`sharing.css` 和整个 `learning/` 目录一并上传 GitHub。
+
+网站使用已生成的静态 HTML，浏览器和 GitHub Pages 无需运行 Python。
+阅读页与原始材料文件夹是独立副本；原笔记改动后，需要更新站点中的对应副本。
+保留材料内的来源、原图说明及所依赖的资源。每份阅读页内提供返回主页和学习目录的链接。
+
 这是一个现代、响应式的个人主页，专为展示您的学术经历和研究成果而定制。该主页参考了先进的学术主页设计，结合您的脑科学研究员身份进行定制。
 
 ## 项目结构
