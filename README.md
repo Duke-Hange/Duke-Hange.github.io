@@ -10,7 +10,7 @@
 - `learning/ten-simple-rules/index.html`：计算建模的十条简单规则。
 - `learning/model-disagreement/index.html`：让模型产生分歧，理解大脑如何计算。
 - `learning/fmri/index.html`：理解 fMRI 预处理。
-- `learning/planning.html`：问题解决与规划（E1）。
+- `learning/planning.html`：问题表示与搜索（E1）。
 - `learning/reinforcement-learning.html`：强化学习与决策（E2）。
 
 ### 新增或更新条目

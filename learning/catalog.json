@@ -34,8 +34,8 @@
   {
     "category": "notes",
     "href": "planning.html",
-    "title": "问题解决与规划",
-    "title_en": "Problem Solving and Planning",
+    "title": "问题表示与搜索",
+    "title_en": "Problem Representation and Search",
     "summary": "以配送任务为线索，学习状态表示、搜索、启发式、约束与对抗。",
     "summary_en": "Learn task representation, search, heuristics, constraints, and adversarial decisions.",
     "meta": "人工智能入门 · E1 · 计算练习",
