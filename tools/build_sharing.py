@@ -30,6 +30,9 @@ def render(english):
         for item in selected:
             sidebar += f'''<li><a class="share-entry" href="learning/{escape(item['href'])}"><span class="share-entry-title">{value(item, 'title', english)}</span><span class="share-entry-summary">{value(item, 'summary', english)}</span><span class="share-entry-meta">{value(item, 'meta', english)}</span></a></li>'''
         sidebar += '</ul></div></section>'
+    code_title = 'Code Sharing' if english else '代码分享'
+    code_status = 'Under construction' if english else '施工中'
+    sidebar += f'<section class="share-section" data-category="code"><h3 id="share-code-title">{code_title}</h3><p class="share-entry-summary">{code_status}</p></section>'
     p = ROOT / home
     text = p.read_text(encoding='utf-8')
     block = '<!-- SHARING:START -->\n' + sidebar + '\n<!-- SHARING:END -->'
