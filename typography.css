@@ -1,0 +1,66 @@
+/* Shared homepage type scale; keep the existing column and card layout. */
+:root {
+    --cv-body: 16px;
+    --cv-section: 26px;
+    --cv-title: 18px;
+    --cv-small: 14px;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans SC", Arial, sans-serif;
+    font-size: var(--cv-body);
+    line-height: 1.75;
+}
+h1, h2, h3 { line-height: 1.45; }
+.section-card h2, .share-heading h2 { font-size: var(--cv-section); }
+.section-updated { font-size: 13px; color: #7f8c8d; font-weight: 400; }
+.sidebar-name-en { font-size: 32px; line-height: 1.3; text-shadow: none; }
+.sidebar-name-cn { font-size: 18px; }
+.sidebar-title, .sidebar-info p { font-size: 15px; line-height: 1.65; }
+.sidebar-info a { overflow-wrap: anywhere; min-width: 0; }
+.exp-details h3, .pub-details h3,
+.extra-edu > h3, .works-subsection > h3, .share-section h3 {
+    font-size: var(--cv-title);
+    line-height: 1.55;
+    font-weight: 600;
+}
+.exp-details p, .exp-details ul, .extra-edu-list li {
+    font-size: var(--cv-body);
+    line-height: 1.75;
+}
+.exp-details .time-period {
+    font-size: var(--cv-small);
+    font-style: normal;
+    font-variant-numeric: tabular-nums;
+}
+.pub-details { min-width: 0; overflow-wrap: anywhere; }
+.pub-details .authors, .pub-links { font-size: var(--cv-small); line-height: 1.75; }
+.pub-details .venue { font-size: 13px; line-height: 1.6; letter-spacing: 0; }
+.share-entry-title { font-size: 16px; line-height: 1.6; }
+.share-entry-summary, .share-caption { font-size: 14px; line-height: 1.75; }
+.share-entry-meta { font-size: 12px; line-height: 1.65; }
+.share-count { font-size: 12px; }
+.share-view-all { font-size: 13px; }
+.footer { font-size: 13px; line-height: 1.8; }
+
+@media (max-width: 1199px) {
+    :root { --cv-section: 23px; }
+    .share-heading h2 { font-size: 21px; }
+}
+@media (max-width: 992px) {
+    /* Include profile padding in its full-width tablet layout. */
+    .sidebar { box-sizing: border-box; }
+}
+@media (max-width: 600px) and (orientation: portrait) {
+    :root { --cv-body: 15px; --cv-section: 21px; --cv-title: 16px; --cv-small: 13px; }
+    .sidebar-name-en { font-size: 27px; }
+    .sidebar-name-cn { font-size: 15px; }
+    .sidebar-title, .sidebar-info p { font-size: 14px; }
+    /* Override the earlier compact mobile text rules, including inline lists. */
+    .exp-details p, .exp-details ul { font-size: 14px !important; }
+    .exp-details .time-period { font-size: 13px !important; }
+    .extra-edu-list li { font-size: 14px; }
+    .pub-details .authors { font-size: 13px; }
+    .pub-details .venue { font-size: 12px !important; }
+    .share-entry-title { font-size: 16px; }
+    .footer { font-size: 12px; }
+}

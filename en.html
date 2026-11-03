@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hang Yu · Personal Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
@@ -291,7 +290,7 @@
         .extra-edu { margin-top: 8px; padding-top: 4px; border-top: 2px solid #e8eef2; }
         .extra-edu > h3 { font-size: 1.15em; margin: 16px 0 4px; }
         .extra-edu-list { list-style: none; margin: 0; padding: 0; }
-        .extra-edu-list li { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 18px; row-gap: 2px; padding: 11px 0; border-bottom: 1px dashed #ecf0f1; font-size: 0.98em; line-height: 1.55; color: #555; }
+        .extra-edu-list li { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 18px; row-gap: 2px; padding: 11px 0; border-bottom: 1px dashed #ecf0f1; color: #555; }
         .extra-edu-list li:last-child { border-bottom: none; padding-bottom: 0; }
         .extra-edu-org { min-width: 6.6em; font-weight: 700; color: #2c3e50; }
         .extra-edu-role { min-width: 5.6em; font-weight: 400; color: #000; }
@@ -465,6 +464,7 @@
     </style>
     <link rel="stylesheet" href="mobile.css?v=20261101-footer" media="(max-width: 600px) and (orientation: portrait)">
 <link rel="stylesheet" href="sharing.css?v=20261101-2">
+<link rel="stylesheet" href="typography.css?v=20261103-1">
 </head>
 <body>
 
@@ -495,7 +495,7 @@
         <div class="main-content">
 
             <div class="section-card">
-                <h2>👋 About Me <span style="font-size: 0.6em; color: #7f8c8d; font-weight: normal;">[Updated March 25, 2026]</span></h2>
+                <h2>👋 About Me <span class="section-updated">[Updated March 25, 2026]</span></h2>
                 <p>I am <strong>Hang Yu</strong>. I completed my undergraduate degree at Zhejiang Sci-Tech University under the supervision of <a href="https://yjsxt.zstu.edu.cn/open/dsfc/search/F56F7CC7AD773059E0530100007F4C41" target="_blank" rel="noopener noreferrer">Bin Yang</a>, and my master’s degree at Sichuan Normal University under <a href="https://ibps.sicnu.edu.cn/p/16/?StId=st_app_news_i_x638514610151893184" target="_blank" rel="noopener noreferrer">Yifeng Wang</a>. I am now a PhD student in cognitive neuroscience at East China Normal University, supervised by <a href="https://faculty.ecnu.edu.cn/_s9/yql2/main.psp" target="_blank" rel="noopener noreferrer">Qianli Yang</a>. I have also gained valuable research experience as a research assistant at the Chinese Institute for Brain Research, Beijing, and Shanghai Jiao Tong University.</p>
 
                 <p>I embarked on an academic career to pursue the questions that most interest me. My current focus is on <strong>computational modeling of human cognition</strong>. I aim to use <strong>probabilistic graphical models</strong> and <strong>reinforcement learning</strong> to understand how humans solve complex problems. I also hope to share what I learn from psychology along the way.</p>
@@ -571,7 +571,7 @@
                         <p class="time-period">2025.08 – 2026.06</p>
                         <p>Supervisor: <a href="https://www.psy.pku.edu.cn/szdw/qzjy/jsyjy/zhry/index.htm" target="_blank" rel="noopener noreferrer">Ru-Yuan Zhang</a></p>
                         <p>Lab: <a href="https://ruyuanzhang.github.io/people.html" target="_blank" rel="noopener noreferrer">Lab of Cognitive Computational Neuroscience and Neuroimaging</a></p>
-                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666;">
                             <li>Assisted with neuroimaging data acquisition and processing.</li>
                             <li>Studied computational modeling of cognition.</li>
                         </ul>
@@ -584,7 +584,7 @@
                         <h3>Research Collaboration · Guangxi Medical University</h3>
                         <p class="time-period">2023.12 – 2025.06</p>
                         <p>Collaborating supervisor: Muliang Jiang; collaborator: Haifeng Zheng.</p>
-                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666;">
                             <li>Collaborated on neuroimaging data analysis in thalassemia.</li>
                         </ul>
                     </div>
@@ -596,7 +596,7 @@
                         <h3>Research Assistant · Chinese Institute for Brain Research, Beijing (CIBR)</h3>
                         <p class="time-period">2023.04 – 2023.11</p>
                         <p>Supervisor: <a href="https://brain.bnu.edu.cn/kytd/jsyjy/Ljs/18e25c12984e48eb966932924b9b76c7.htm" target="_blank" rel="noopener noreferrer">Yunzhe Liu</a></p>
-                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666;">
                             <li>Assisted with OPM-MEG data acquisition and developed data-processing scripts.</li>
                             <li>Studied the decoding of human memory sequences.</li>
                         </ul>
@@ -622,7 +622,7 @@
                     <div class="exp-details">
                         <h3>Partner · Yijia Drama Club</h3>
                         <p class="time-period">2018 – 2021</p>
-                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666;">
                             <li>Developed an in-person social entertainment business, expanding to three franchise locations within six months.</li>
                         </ul>
                     </div>
@@ -633,7 +633,7 @@
                     <div class="exp-details">
                         <h3>Partner · Shulan Daily Rentals</h3>
                         <p class="time-period">2018 – 2021</p>
-                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666;">
                             <li>Built a B2C business focused on in-person social activities; secured RMB 800,000 in seed funding.</li>
                             <li>National Gold Award, 12th “Challenge Cup” China College Students’ Entrepreneurship Competition.</li>
                         </ul>
@@ -645,7 +645,7 @@
                     <div class="exp-details">
                         <h3>Partner · Zheli Time</h3>
                         <p class="time-period">2018 – 2021</p>
-                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666; font-size: 0.98em; line-height: 1.55;">
+                        <ul style="margin: 10px 0 0 0; padding-left: 1.35em; color: #666;">
                             <li>Organized the inaugural Alibaba Literature Summit, from planning and sponsorship to execution.</li>
                             <li>Developed campus cultural and creative products under the Zheli Time brand.</li>
                             <li>Operated the Zheli Time Café and Zheli Time Xinhua Bookstore.</li>
